@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Gament</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">پروفایل</string>
+    <string name="console">کنسول</string>
+    <string name="home">خانه</string>
+    <string name="open_drawer">OPEN</string>
+    <string name="close_drawer">CLOSE</string>
+    <string name="alireza_aslani">علیرضا اصلانی</string>
+    <string name="test_email">test.email@gmail.com</string>
+    <string name="messages">پیام ها</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="phone_number">شماره موبایل</string>
+    <string name="next">مرحله ی بعد</string>
+    <string name="login_title">ورود یا عضویت</string>
+    <string name="username">نام کاربری</string>
+    <string name="add_image">انتخاب تصویر</string>
+    <string name="name">نام</string>
+    <string name="family">نام خانوادگی</string>
+    <string name="cancel">انصراف</string>
+    <string name="register_phone_info">شماره موبایل خود را بدون 0 ابتدایی وارد نمایید</string>
+    <string name="send">ارسال</string>
+    <string name="register">ثبت نام</string>
+    <string name="verify_code">کد فعالسازی</string>
+    <string name="logout">خروج از حساب کاربری</string>
+    <string name="login_verify_code_info">کد فعالسازی به شماره ی شما ارسال میگردد</string>
+    <string name="verify_code_timer_title">مدت زمان اعتبار کد</string>
+    <string name="_03_00">03:00</string>
+    <string name="choice_picture">انتخاب تصویر</string>
+</resources>

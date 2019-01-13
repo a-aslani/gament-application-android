@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content" tools:srcCompat="@tools:sample/backgrounds/scenic[15]"
+                android:id="@+id/item_main_img_game_image" android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+                tools:text="MODERN WARFAR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_main_txt_game_name"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="14sp" android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_image" android:layout_marginStart="16dp"
+                android:textAlignment="viewEnd"/>
+        <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp" app:srcCompat="@drawable/ic_ps"
+                android:id="@+id/item_main_img_game_ps"
+                app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_xbox"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_mobile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintTop_toTopOf="@+id/item_main_img_game_mobile"
+                app:layout_constraintBottom_toBottomOf="@+id/item_main_img_game_mobile"/>
+        <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp" app:srcCompat="@drawable/ic_computer"
+                android:id="@+id/item_main_img_game_pc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/item_main_img_game_xbox"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_xbox"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintTop_toTopOf="@+id/item_main_img_game_xbox"/>
+        <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp" app:srcCompat="@drawable/ic_phone"
+                android:id="@+id/item_main_img_game_mobile"
+                app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_ps"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_image"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"/>
+        <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp" app:srcCompat="@drawable/ic_xbox"
+                android:id="@+id/item_main_img_game_xbox"
+                app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_pc"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_ps"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toTopOf="@+id/item_main_img_game_ps"
+                app:layout_constraintBottom_toBottomOf="@+id/item_main_img_game_ps"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

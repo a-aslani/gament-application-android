@@ -1,0 +1,65 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textViewStyle">@style/FarsiTextStyle</item>
+        <item name="android:buttonStyle">@style/FarsiButtonStyle</item>
+        <item name="bottomAppBarStyle">@style/AppTheme.BottomAppbarStyle</item>
+        <item name="colorControlHighlight">@color/textColorSecondary</item>
+        <item name="materialCardViewStyle">@style/AppTheme.CardView</item>
+        <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>
+    </style>
+
+    <style name="AppTheme.CollapseStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="FarsiTextStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/iranyekanmedium</item>
+    </style>
+
+    <style name="FarsiButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/iranyekanmedium</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="AppTheme.BottomAppbarStyle" parent="Widget.MaterialComponents.BottomAppBar" >
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/cardBackground</item>
+    </style>
+
+    <style name="DrawerHamburgerStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColorHint">@color/textColorPrimary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="colorAccent">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/iranyekanregular</item>
+        <item name="editTextColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="AppTheme.EditTextError" parent="@android:style/TextAppearance">
+
+        <item name="android:textColor">@color/errorColor</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:fontFamily">@font/iranyekanmedium</item>
+    </style>
+
+</resources>
