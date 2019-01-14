@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 import gamentorg.gament.db.entities.Game
 
 data class GamesResponse(
-    @SerializedName("data") var data: Data,
+    @SerializedName("data") var data: GamesData,
     @SerializedName("state") var state: Boolean
 )
 
-data class Data(
+data class GamesData(
     @SerializedName("documents") var documents: List<Game>,
     @SerializedName("total_page") var totalPage: Int,
     @SerializedName("current_page") var currentPage: Int

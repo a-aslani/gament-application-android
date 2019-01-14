@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun setupNavigationDrawerData() {
 
-        var navCount: Int = navigation_view.headerCount
+        val navCount: Int = navigation_view.headerCount
 
         if (applicationService.isLoggedIn()) {
 
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
             navigation_view.inflateHeaderView(R.layout.navigation_drawer_header)
             navigation_view.inflateMenu(R.menu.navigation_drawer_menu)
 
-            var navHeader = if (navigation_view.headerCount == 0) {
+            val navHeader = if (navigation_view.headerCount == 0) {
                 navigation_view.getHeaderView(navigation_view.headerCount)
             }else {
                 navigation_view.getHeaderView(navigation_view.headerCount - 1)
@@ -159,7 +159,6 @@ class MainActivity : AppCompatActivity() {
 
             navigation_view.inflateHeaderView(R.layout.navigation_drawer_header_quest)
             navigation_view.menu.removeGroup(0)
-            navCount = navigation_view.headerCount
         }
     }
 

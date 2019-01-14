@@ -1,6 +1,5 @@
 package gamentorg.gament.ui.login
 
-
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -11,6 +10,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.AndroidSupportInjection
@@ -29,6 +30,9 @@ import okhttp3.RequestBody
 import retrofit2.Response
 import javax.inject.Inject
 import com.squareup.picasso.Picasso
+import gamentorg.gament.utility.FileUtils
+import okhttp3.MultipartBody
+import java.io.File
 
 
 class RegisterFragment : Fragment() {
@@ -51,9 +55,14 @@ class RegisterFragment : Fragment() {
     @Inject
     lateinit var picasso: Picasso
 
+    @Inject
+    lateinit var fileUtils: FileUtils
+
     private lateinit var userViewModel: UserViewModel
 
-    private var imageBody: RequestBody? = null
+    private var imageMultiPart: MultipartBody.Part? = null
+
+    private var btnClicked: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -70,11 +79,25 @@ class RegisterFragment : Fragment() {
 
         userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel::class.java)
 
+        (activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(view.windowToken, 0)
+
+        register_progress_bar.visibility = View.INVISIBLE
+
+        cancelRegister()
+
         usernameCheck()
 
         getImage()
 
-        createUser()
+        if (!btnClicked) {
+            createUser()
+        }
+    }
+
+    private fun cancelRegister() {
+        register_btn_cancel.setOnClickListener {
+            activity!!.finish()
+        }
     }
 
     private fun createUser() {
@@ -102,12 +125,18 @@ class RegisterFragment : Fragment() {
 
             if (usernameError == "" && nameError == "" && familyError == "") {
 
+                register_progress_bar.visibility = View.VISIBLE
+
+                register_btn_signup.text = getString(R.string.sendig)
+
+                btnClicked = true
+
                 val usernameBody = RequestBody.create(MediaType.parse("text/plain"), username)
                 val nameBody = RequestBody.create(MediaType.parse("text/plain"), name)
                 val familyBody = RequestBody.create(MediaType.parse("text/plain"), family)
 
                 apiRequest.createUser(
-                    imageBody,
+                    imageMultiPart,
                     usernameBody,
                     nameBody,
                     familyBody,
@@ -139,6 +168,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun getImage() {
+
         register_img_profile_image.setOnClickListener {
 
             val getIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -176,11 +206,21 @@ class RegisterFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
+        register_progress_bar.visibility = View.INVISIBLE
+
         if (requestCode == Config.PROFILE_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
 
-//            imageBody = RequestBody.create(MediaType.parse("image/*"), finalFile)
+            if (data != null) {
 
-            picasso.load(data!!.data).into(register_img_profile_image)
+                val imageFile = File(fileUtils.getRealPathFromURIPath(data.data!!, activity!!))
+
+                val mFile = RequestBody.create(MediaType.parse("image/*"), imageFile)
+
+                imageMultiPart = MultipartBody.Part.createFormData("image", imageFile.name, mFile)
+
+                picasso.load(data.data).into(register_img_profile_image)
+            }
+
         }
     }
 

@@ -3,44 +3,21 @@
   <component name="navEditor-manualLayoutAlgorithm2">
     <option name="myPositions">
       <map>
-        <entry key="login_nav_graph.xml">
+        <entry key="game_nav_graph.xml">
           <value>
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="loginPageOneFragment">
+                  <entry key="gameFragment2">
                     <value>
                       <LayoutPositions>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_loginPageOneFragment_to_loginPageTwoFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="171" />
+                            <option name="y" value="199" />
+                          </Point>
                         </option>
                       </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="loginPageTwoFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_loginPageTwoFragment_to_registerFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="registerFragment">
-                    <value>
-                      <LayoutPositions />
                     </value>
                   </entry>
                 </map>
@@ -53,13 +30,25 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="gameActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="303" />
+                            <option name="y" value="-242" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="loginActivity">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="344" />
-                            <option name="y" value="-110" />
+                            <option name="x" value="375" />
+                            <option name="y" value="81" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -70,18 +59,18 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-45" />
-                            <option name="y" value="13" />
+                            <option name="x" value="-85" />
+                            <option name="y" value="-73" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_mainFragment_to_loginActivity">
+                            <entry key="action_mainFragment_to_gameActivity">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_mainFragment_to_tournamentFragment">
+                            <entry key="action_mainFragment_to_loginActivity">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -96,8 +85,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="363" />
-                            <option name="y" value="232" />
+                            <option name="x" value="194" />
+                            <option name="y" value="245" />
                           </Point>
                         </option>
                       </LayoutPositions>

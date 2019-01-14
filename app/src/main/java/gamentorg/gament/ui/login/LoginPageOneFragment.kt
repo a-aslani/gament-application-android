@@ -29,6 +29,8 @@ class LoginPageOneFragment : Fragment() {
         var phoneKey: String? = null
     }
 
+    private var btnClicked: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_page_one, container, false)
@@ -44,10 +46,13 @@ class LoginPageOneFragment : Fragment() {
 
         cancelLogin()
 
-        sendPhoneNumber()
+        if (!btnClicked) {
+            sendPhoneNumber()
+        }
     }
 
     private fun sendPhoneNumber() {
+
         register_btn_next.setOnClickListener {
 
             val phoneNumber = login_txt_phone_number.text.toString().trim()
@@ -62,6 +67,13 @@ class LoginPageOneFragment : Fragment() {
             if (error != "") {
                 login_txt_phone_number.error = error
             } else {
+
+                register_btn_next.text = getString(R.string.sendig)
+
+                login_page_one_progress_bar.visibility = View.VISIBLE
+
+                btnClicked = true
+
                 apiRequest.loginSendPhoneNumber(phoneNumber, object :
                     ApiRequest.Callback<LoginPhoneResponse> {
 
@@ -69,6 +81,7 @@ class LoginPageOneFragment : Fragment() {
                         if (response.isSuccessful && response.body() != null) {
                             if (response.body()!!.state) {
                                 phoneKey = response.body()!!.data.phoneKey
+                                login_page_one_progress_bar.visibility = View.INVISIBLE
                                 findNavController().navigate(R.id.action_loginPageOneFragment_to_loginPageTwoFragment)
                             }
                         }

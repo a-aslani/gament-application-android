@@ -3,6 +3,7 @@ package gamentorg.gament.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -61,6 +62,10 @@ class MainGamesListAdapter @Inject constructor(private val picasso: Picasso) :
             }
             if (game.xbox == true) {
                 itemView.item_main_img_game_xbox.setImageResource(R.drawable.ic_xbox_active)
+            }
+
+            itemView.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_gameActivity)
             }
         }
     }

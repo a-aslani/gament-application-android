@@ -7,6 +7,7 @@ import gamentorg.gament.services.network.models.CheckUsernameResponse
 import gamentorg.gament.services.network.models.LoginPhoneResponse
 import gamentorg.gament.services.network.models.LoginVerifyCodeResponse
 import gamentorg.gament.services.network.models.RegisterResponse
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,7 +63,7 @@ class ApiRequest @Inject constructor(private val apiService: ApiService, private
         })
     }
 
-    fun createUser(image: RequestBody?, username: RequestBody, name: RequestBody, family: RequestBody, callback: Callback<RegisterResponse>) {
+    fun createUser(image: MultipartBody.Part?, username: RequestBody, name: RequestBody, family: RequestBody, callback: Callback<RegisterResponse>) {
 
         val registerToken = sharedPreferences.getString(Config.REGISTER_TOKEN, "") ?: ""
 

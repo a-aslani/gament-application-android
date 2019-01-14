@@ -37,4 +37,6 @@ class AppModule {
     fun typeFaceIranYekanMedium(application: Application): Typeface {
         return ResourcesCompat.getFont(application.applicationContext, R.font.iranyekanmedium)!!
     }
+
+
 }

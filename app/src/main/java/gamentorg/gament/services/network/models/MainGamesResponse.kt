@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import gamentorg.gament.db.entities.Game
 
 data class MainGamesResponse(
-    @SerializedName("data") var data: Data,
+    @SerializedName("data") var data: GamesData,
     @SerializedName("state") var state: Boolean
 )
 

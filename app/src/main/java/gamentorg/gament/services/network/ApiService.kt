@@ -1,6 +1,7 @@
 package gamentorg.gament.services.network
 
 import gamentorg.gament.services.network.models.*
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -29,7 +30,7 @@ interface ApiService {
     @POST("v1/users")
     fun createUser(
         @Header("Register") registerToken: String,
-        @Part("image") image: RequestBody?,
+        @Part image: MultipartBody.Part?,
         @Part("username") username: RequestBody,
         @Part("name") name: RequestBody,
         @Part("family") family: RequestBody) : Call<RegisterResponse>
