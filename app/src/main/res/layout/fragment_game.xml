@@ -4,14 +4,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".ui.main.GameFragment">
+             tools:context=".ui.game.GameFragment">
 
 
     <TextView
             android:text="game"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:id="@+id/game_txt_title"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp" android:textSize="24sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@
         <item name="colorControlHighlight">@color/textColorSecondary</item>
         <item name="materialCardViewStyle">@style/AppTheme.CardView</item>
         <item name="drawerArrowStyle">@style/DrawerHamburgerStyle</item>
+        <item name="android:homeAsUpIndicator">@color/textColorPrimary</item>
     </style>
 
     <style name="AppTheme.CollapseStyle" parent="android:Widget.TextView">

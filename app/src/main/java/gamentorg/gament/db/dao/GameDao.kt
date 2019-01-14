@@ -1,5 +1,6 @@
 package gamentorg.gament.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -13,6 +14,9 @@ interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertGames(games: List<Game>)
 
-    @Query("SELECT * FROM games ORDER BY created_at DESC")
+    @Query("SELECT * FROM `games` ORDER BY `created_at` DESC")
     fun getAllGamesSortedByDate(): DataSource.Factory<Int, Game>
+
+    @Query("SELECT * FROM `games` WHERE `key`=:key")
+    fun getGameByKey(key: String): LiveData<Game>
 }

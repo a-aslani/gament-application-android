@@ -2,10 +2,10 @@ package gamentorg.gament.di.modules
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import gamentorg.gament.GameActivity
-import gamentorg.gament.LoginActivity
-import gamentorg.gament.MainActivity
-import gamentorg.gament.SplashActivity
+import gamentorg.gament.ui.GameActivity
+import gamentorg.gament.ui.LoginActivity
+import gamentorg.gament.ui.MainActivity
+import gamentorg.gament.ui.SplashActivity
 
 @Module
 abstract class ActivityModule {

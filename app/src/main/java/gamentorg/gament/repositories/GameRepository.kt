@@ -1,6 +1,7 @@
 package gamentorg.gament.repositories
 
 import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 import gamentorg.gament.db.AppDatabase
 import gamentorg.gament.db.dao.GameDao
 import gamentorg.gament.db.entities.Game
@@ -25,5 +26,9 @@ class GameRepository @Inject constructor(appDatabase: AppDatabase) {
 
     fun insertGames(games: List<Game>) {
         InsertGames(gameDao).execute(games)
+    }
+
+    fun getGameByKey(key: String): LiveData<Game> {
+        return gameDao.getGameByKey(key)
     }
 }

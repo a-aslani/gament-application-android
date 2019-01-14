@@ -42,4 +42,5 @@
     <string name="sendig">در حال ارسال ...</string>
     <string name="authenticate">تایید هویت</string>
     <string name="join">عضویت</string>
+    <string name="game_extras">game</string>
 </resources>

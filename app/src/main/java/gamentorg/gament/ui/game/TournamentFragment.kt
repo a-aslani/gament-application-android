@@ -1,4 +1,4 @@
-package gamentorg.gament.ui
+package gamentorg.gament.ui.game
 
 
 import android.os.Bundle

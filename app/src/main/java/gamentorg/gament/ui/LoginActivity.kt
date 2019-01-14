@@ -1,8 +1,9 @@
-package gamentorg.gament
+package gamentorg.gament.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import dagger.android.AndroidInjection
+import gamentorg.gament.R
 
 class LoginActivity : AppCompatActivity() {
 

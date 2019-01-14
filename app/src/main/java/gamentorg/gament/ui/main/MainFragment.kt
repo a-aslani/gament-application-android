@@ -1,7 +1,7 @@
 package gamentorg.gament.ui.main
 
-
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,8 +12,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.android.support.AndroidSupportInjection
+import gamentorg.gament.ui.GameActivity
 import gamentorg.gament.R
-import gamentorg.gament.adapters.MainGamesListAdapter
+import gamentorg.gament.adapters.main.GamesListAdapter
+import gamentorg.gament.db.entities.Game
 import gamentorg.gament.vm.GameViewModel
 import gamentorg.gament.vm.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -25,7 +27,7 @@ class MainFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var gamesListAdapter: MainGamesListAdapter
+    lateinit var gamesListAdapter: GamesListAdapter
 
     private lateinit var gameViewModel: GameViewModel
 
@@ -48,6 +50,18 @@ class MainFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(activity!!.applicationContext, RecyclerView.VERTICAL, false)
         rv.hasFixedSize()
         rv.adapter = gamesListAdapter
+
+        gamesListAdapter.onItemClickListener(object : GamesListAdapter.OnItemClickListener {
+
+            override fun game(game: Game) {
+
+                val intent = Intent(activity, GameActivity::class.java)
+
+                intent.putExtra(getString(R.string.game_extras), game)
+                startActivity(intent)
+                activity!!.overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out)
+            }
+        })
 
         gameViewModel.getAllGamesSortedByDate().observe(this, Observer {
             gamesListAdapter.submitList(it)

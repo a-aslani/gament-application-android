@@ -1,9 +1,8 @@
-package gamentorg.gament.adapters
+package gamentorg.gament.adapters.main
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +15,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MainGamesListAdapter @Inject constructor(private val picasso: Picasso) :
-    PagedListAdapter<Game, MainGamesListAdapter.MainGamesListAdapterViewHolder>(object : DiffUtil.ItemCallback<Game>() {
+class GamesListAdapter @Inject constructor(private val picasso: Picasso) :
+    PagedListAdapter<Game, GamesListAdapter.MainGamesListAdapterViewHolder>(object : DiffUtil.ItemCallback<Game>() {
         override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
             return oldItem.key == newItem.key
         }
@@ -26,6 +25,13 @@ class MainGamesListAdapter @Inject constructor(private val picasso: Picasso) :
             return oldItem == newItem
         }
     }) {
+
+    private lateinit var onClickListener: OnItemClickListener
+
+    fun onItemClickListener(onClickListener: OnItemClickListener) {
+        this.onClickListener = onClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainGamesListAdapterViewHolder {
         return MainGamesListAdapterViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -39,14 +45,14 @@ class MainGamesListAdapter @Inject constructor(private val picasso: Picasso) :
     override fun onBindViewHolder(holder: MainGamesListAdapterViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
-            holder.bindData(data)
+            holder.bindData(data, onClickListener)
         }
     }
 
 
     inner class MainGamesListAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindData(game: Game) {
+        fun bindData(game: Game, onClickListener: OnItemClickListener) {
 
             picasso.load(Config.SERVER_ADDRESS + "/" + game.image).into(itemView.item_main_img_game_image)
             itemView.item_main_txt_game_name.text = game.name!!.toUpperCase()
@@ -65,8 +71,12 @@ class MainGamesListAdapter @Inject constructor(private val picasso: Picasso) :
             }
 
             itemView.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_gameActivity)
+                onClickListener.game(game)
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun game(game: Game)
     }
 }

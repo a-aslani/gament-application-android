@@ -1,4 +1,4 @@
-package gamentorg.gament
+package gamentorg.gament.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -19,6 +19,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
+import gamentorg.gament.ControllerActivity
+import gamentorg.gament.R
 import gamentorg.gament.constants.Config
 import gamentorg.gament.services.ApplicationService
 import gamentorg.gament.vm.UserViewModel
@@ -84,15 +86,19 @@ class MainActivity : AppCompatActivity() {
         } else {
             main_fab.setImageResource(R.drawable.ic_game_pad)
             main_fab.setOnClickListener {
+
                 startActivity(Intent(this, ControllerActivity::class.java))
+
             }
         }
-
     }
 
     private fun setupNavigationDrawer() {
         val toggle =
-            ActionBarDrawerToggle(this, drawer_layout, main_toolbar, R.string.open_drawer, R.string.close_drawer)
+            ActionBarDrawerToggle(this, drawer_layout, main_toolbar,
+                R.string.open_drawer,
+                R.string.close_drawer
+            )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 

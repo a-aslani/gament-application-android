@@ -1,4 +1,4 @@
-package gamentorg.gament
+package gamentorg.gament.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
+import gamentorg.gament.R
 import gamentorg.gament.constants.Config
 import gamentorg.gament.services.ApplicationService
 import gamentorg.gament.vm.UserViewModel

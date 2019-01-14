@@ -10,12 +10,14 @@
         <action android:id="@+id/action_mainFragment_to_loginActivity" app:destination="@id/loginActivity"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
-        <action android:id="@+id/action_mainFragment_to_gameActivity" app:destination="@id/gameActivity"/>
+        <action android:id="@+id/action_mainFragment_to_gameActivity" app:destination="@+id/gameActivity">
+        </action>
     </fragment>
-    <fragment android:id="@+id/tournamentFragment" android:name="gamentorg.gament.ui.TournamentFragment"
+    <fragment android:id="@+id/tournamentFragment" android:name="gamentorg.gament.ui.game.TournamentFragment"
               android:label="fragment_tournament" tools:layout="@layout/fragment_tournament"/>
-    <activity android:id="@+id/loginActivity" android:name="gamentorg.gament.LoginActivity"
+    <activity android:id="@+id/loginActivity" android:name="gamentorg.gament.ui.LoginActivity"
               android:label="ورود یا عضویت" tools:layout="@layout/activity_login"/>
-    <activity android:id="@+id/gameActivity" android:name="gamentorg.gament.GameActivity" android:label="activity_game"
-              tools:layout="@layout/activity_game"/>
+    <activity android:id="@+id/gameActivity" android:name="gamentorg.gament.ui.GameActivity" android:label="activity_game"
+              tools:layout="@layout/activity_game">
+    </activity>
 </navigation>

@@ -6,7 +6,7 @@ import gamentorg.gament.ui.main.MainFragment
 import gamentorg.gament.ui.login.LoginPageOneFragment
 import gamentorg.gament.ui.login.LoginPageTwoFragment
 import gamentorg.gament.ui.login.RegisterFragment
-import gamentorg.gament.ui.main.GameFragment
+import gamentorg.gament.ui.game.GameFragment
 
 @Module
 abstract class FragmentModule {
