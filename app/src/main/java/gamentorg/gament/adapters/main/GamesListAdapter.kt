@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import gamentorg.gament.R
 import gamentorg.gament.constants.Config
 import gamentorg.gament.db.entities.Game
-import kotlinx.android.synthetic.main.item_main_rv_game_card.view.*
+import kotlinx.android.synthetic.main.item_main_game_card.view.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -35,7 +35,7 @@ class GamesListAdapter @Inject constructor(private val picasso: Picasso) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainGamesListAdapterViewHolder {
         return MainGamesListAdapterViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_main_rv_game_card,
+                R.layout.item_main_game_card,
                 parent,
                 false
             )
@@ -54,7 +54,7 @@ class GamesListAdapter @Inject constructor(private val picasso: Picasso) :
 
         fun bindData(game: Game, onClickListener: OnItemClickListener) {
 
-            picasso.load(Config.SERVER_ADDRESS + "/" + game.image).into(itemView.item_main_img_game_image)
+            picasso.load(Config.SERVER_ADDRESS + "/" + game.image).placeholder(R.drawable.placeholder_game_card).into(itemView.item_main_img_game_image)
             itemView.item_main_txt_game_name.text = game.name!!.toUpperCase()
 
             if (game.pc == true) {

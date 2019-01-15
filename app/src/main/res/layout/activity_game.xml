@@ -17,9 +17,10 @@
                 android:layout_height="match_parent"
                 app:contentScrim="@color/cardBackground"
                 app:expandedTitleGravity="bottom|start"
+                app:expandedTitleMarginBottom="54dp"
                 app:expandedTitleTextAppearance="@style/AppTheme.CollapseStyle"
                 app:collapsedTitleTextAppearance="@color/textColorPrimary"
-                app:expandedTitleMarginStart="@dimen/shrine_toolbar_offset_start"
+                app:expandedTitleMarginStart="32dp"
                 app:expandedTitleMarginTop="@dimen/shrine_toolbar_offset_top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
@@ -27,8 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.5"
-                    android:layout_marginTop="?attr/actionBarSize">
+                    app:layout_collapseParallaxMultiplier="0.5">
                 <ImageView
                         android:id="@+id/game_banner_image"
                         android:layout_width="match_parent"
@@ -39,21 +39,76 @@
                 <View
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/banner_gradient"/>
+                        android:background="@drawable/banner_game_gradient"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|start">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_computer_light"
+                            android:id="@+id/game_img_game_pc" app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="16dp" app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="16dp" app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="32dp"/>
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_ps_light"
+                            android:id="@+id/game_img_game_ps"
+                            app:layout_constraintStart_toEndOf="@+id/game_img_game_pc"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintTop_toTopOf="@+id/game_img_game_pc"
+                            app:layout_constraintBottom_toBottomOf="@+id/game_img_game_pc"
+                    />
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp" app:srcCompat="@drawable/ic_xbox_light"
+                            android:id="@+id/game_img_game_xbox"
+                            app:layout_constraintStart_toEndOf="@+id/game_img_game_ps"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintTop_toTopOf="@+id/game_img_game_ps"
+                            app:layout_constraintBottom_toBottomOf="@+id/game_img_game_ps"
+                    />
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_phone_light"
+                            android:id="@+id/game_img_game_mobile"
+                            app:layout_constraintStart_toEndOf="@+id/game_img_game_xbox"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintTop_toTopOf="@+id/game_img_game_xbox"
+                            app:layout_constraintBottom_toBottomOf="@+id/game_img_game_xbox"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
             <androidx.appcompat.widget.Toolbar
                     android:id="@+id/game_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:layoutDirection="rtl"
-                    android:textDirection="rtl"
                     app:layout_collapseMode="pin"/>
+
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
+        <com.google.android.material.tabs.TabLayout
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/game_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabInlineLabel="true"
+                app:tabTextColor="@color/infoColor"
+                style="@style/Widget.MaterialComponents.TabLayout"
+                app:tabSelectedTextColor="@color/textColorPrimary"
+                app:tabTextAppearance="@style/AppTheme.TextAppearance"
+                android:background="@color/colorPrimary">
+
+        </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <fragment
             app:layout_behavior="@string/appbar_scrolling_view_behavior"

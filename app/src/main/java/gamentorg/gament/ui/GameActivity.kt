@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import dagger.android.AndroidInjection
 import gamentorg.gament.R
 import kotlinx.android.synthetic.main.activity_game.*
@@ -14,6 +15,9 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
         setContentView(R.layout.activity_game)
+
+        //Set activity direction to RTL
+        window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
 
         setupToolbar()
 

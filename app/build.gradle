@@ -98,4 +98,6 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
     implementation "de.hdodenhof:circleimageview:$circle_image_view_version"
+
+//    implementation 'com.github.traex.rippleeffect:library:1.3'
 }

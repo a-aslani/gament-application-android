@@ -59,7 +59,7 @@ class MainFragment : Fragment() {
 
                 intent.putExtra(getString(R.string.game_extras), game)
                 startActivity(intent)
-                activity!!.overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out)
+                //activity!!.overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out)
             }
         })
 

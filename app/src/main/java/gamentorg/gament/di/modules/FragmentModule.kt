@@ -25,4 +25,5 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     internal abstract fun contributeGameFragment(): GameFragment
+
 }
