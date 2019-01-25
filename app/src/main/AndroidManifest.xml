@@ -19,10 +19,6 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.MainActivity">
-        </activity>
-        <activity
-                android:name=".ui.SplashActivity"
-                android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -34,8 +30,6 @@
                 android:windowSoftInputMode="adjustResize">
         </activity>
         <activity android:name=".ControllerActivity">
-        </activity>
-        <activity android:name=".ui.GameActivity">
         </activity>
     </application>
 

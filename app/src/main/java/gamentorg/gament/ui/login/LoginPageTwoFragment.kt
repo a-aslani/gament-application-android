@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_login_page_two.*
 import retrofit2.Response
 import javax.inject.Inject
 import android.widget.Toast
+import gamentorg.gament.ui.MainActivity
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -65,8 +67,6 @@ class LoginPageTwoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         userViewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel::class.java)
-
-        cancelLogin()
 
         if (!btnClicked) {
             sendVerifyCode()
@@ -131,7 +131,8 @@ class LoginPageTwoFragment : Fragment() {
                                 } else {
                                     sharedPreferences.edit().putString(Config.API_TOKEN, token).apply()
                                     userViewModel.insertUser(token)
-                                    activity!!.finish()
+
+                                    findNavController().popBackStack()
                                 }
                             }
                         } else if (response.code() == 400) {
@@ -148,6 +149,7 @@ class LoginPageTwoFragment : Fragment() {
     }
 
     private fun sendLoading(loading: Boolean) {
+
         if (loading) {
 
             register_btn_send.text = getString(R.string.sendig)
@@ -166,11 +168,9 @@ class LoginPageTwoFragment : Fragment() {
         }
     }
 
-    private fun cancelLogin() {
-        register_btn_cancel.setOnClickListener {
-            activity!!.finish()
-        }
+    override fun onDestroy() {
+        (activity as MainActivity).refreshUi()
+        super.onDestroy()
     }
-
 
 }

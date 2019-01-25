@@ -15,9 +15,10 @@
     <TextView
             android:text="@string/authenticate"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView3" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content" android:id="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/login_page_two_progress_bar" android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp" android:textSize="18sp"/>
+            android:textSize="18sp" android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"/>
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,9 +47,9 @@
             android:text="@string/login_verify_code_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/login_verify_code_info"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="24dp" android:layout_marginTop="8dp" android:textColor="@color/infoColor"
-    />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            android:layout_marginTop="8dp" android:textColor="@color/infoColor"
+            android:layout_marginStart="24dp" app:layout_constraintStart_toStartOf="parent"/>
     <TextView
             android:text="@string/_03_00"
             android:layout_width="wrap_content"
@@ -74,22 +75,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     style="@style/FarsiButtonStyle"
-                    app:cornerRadius="25dp" android:background="@color/blue" app:backgroundTint="@color/blue"
-                    android:layout_marginBottom="16dp" android:layout_marginStart="24dp"
-                    app:layout_constraintHorizontal_chainStyle="spread_inside" android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/register_btn_cancel" android:layout_width="0dp"
-            />
-            <com.google.android.material.button.MaterialButton
-                    android:text="@string/cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/register_btn_cancel" app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent" app:cornerRadius="25dp"
-                    android:background="@color/errorColor" app:backgroundTint="@color/errorColor"
-                    style="@style/FarsiButtonStyle"
-                    android:paddingStart="32dp" android:paddingEnd="32dp"
-            />
+                    android:background="@color/blue" app:backgroundTint="@color/blue"
+                    android:layout_marginBottom="8dp" android:layout_marginStart="24dp"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 

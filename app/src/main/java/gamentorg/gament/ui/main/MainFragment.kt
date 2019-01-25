@@ -1,7 +1,6 @@
 package gamentorg.gament.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.android.support.AndroidSupportInjection
-import gamentorg.gament.ui.GameActivity
 import gamentorg.gament.R
 import gamentorg.gament.adapters.main.GamesListAdapter
 import gamentorg.gament.db.entities.Game
@@ -34,6 +33,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
+
     }
 
     override fun onAttach(context: Context) {
@@ -44,28 +44,35 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gameViewModel = ViewModelProviders.of(this, viewModelFactory).get(GameViewModel::class.java)
-
         val rv = view.main_rv_games
         rv.layoutManager = LinearLayoutManager(activity!!.applicationContext, RecyclerView.VERTICAL, false)
         rv.hasFixedSize()
+        rv.isNestedScrollingEnabled = false
         rv.adapter = gamesListAdapter
 
         gamesListAdapter.onItemClickListener(object : GamesListAdapter.OnItemClickListener {
 
             override fun game(game: Game) {
 
-                val intent = Intent(activity, GameActivity::class.java)
+                val bundle = Bundle()
+                bundle.putParcelable(getString(R.string.game_extras), game)
 
-                intent.putExtra(getString(R.string.game_extras), game)
-                startActivity(intent)
-                //activity!!.overridePendingTransition(R.anim.trans_left_in, R.anim.trans_left_out)
+                findNavController().navigate(R.id.action_mainFragment_to_gameFragment, bundle)
+
             }
         })
 
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        gameViewModel = ViewModelProviders.of(this, viewModelFactory).get(GameViewModel::class.java)
+
         gameViewModel.getAllGamesSortedByDate().observe(this, Observer {
             gamesListAdapter.submitList(it)
-        })
 
+        })
     }
+
 }

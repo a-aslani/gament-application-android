@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import dagger.android.support.AndroidSupportInjection
 import gamentorg.gament.R
 import gamentorg.gament.constants.Config
@@ -30,6 +31,7 @@ import okhttp3.RequestBody
 import retrofit2.Response
 import javax.inject.Inject
 import com.squareup.picasso.Picasso
+import gamentorg.gament.ui.MainActivity
 import gamentorg.gament.utility.FileUtils
 import okhttp3.MultipartBody
 import java.io.File
@@ -83,20 +85,12 @@ class RegisterFragment : Fragment() {
 
         register_progress_bar.visibility = View.INVISIBLE
 
-        cancelRegister()
-
         usernameCheck()
 
         getImage()
 
         if (!btnClicked) {
             createUser()
-        }
-    }
-
-    private fun cancelRegister() {
-        register_btn_cancel.setOnClickListener {
-            activity!!.finish()
         }
     }
 
@@ -146,7 +140,7 @@ class RegisterFragment : Fragment() {
                                 val apiToken = response.body()!!.data.apiToken
                                 sharedPreferences.edit().putString(Config.API_TOKEN, apiToken).apply()
                                 userViewModel.insertUser(apiToken)
-                                activity!!.finish()
+                                findNavController().popBackStack()
                             }
                         }
                     })
@@ -222,6 +216,11 @@ class RegisterFragment : Fragment() {
             }
 
         }
+    }
+
+    override fun onDestroy() {
+        (activity as MainActivity).refreshUi()
+        super.onDestroy()
     }
 
 }

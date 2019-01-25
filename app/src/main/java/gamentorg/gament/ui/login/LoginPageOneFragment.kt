@@ -44,8 +44,6 @@ class LoginPageOneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        cancelLogin()
-
         if (!btnClicked) {
             sendPhoneNumber()
         }
@@ -88,12 +86,6 @@ class LoginPageOneFragment : Fragment() {
                     }
                 })
             }
-        }
-    }
-
-    private fun cancelLogin() {
-        register_btn_cancel.setOnClickListener {
-            activity!!.finish()
         }
     }
 }

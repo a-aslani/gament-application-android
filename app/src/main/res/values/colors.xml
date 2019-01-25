@@ -2,20 +2,20 @@
 <resources>
     <color name="colorPrimary">#343744</color>
     <color name="colorPrimaryDark">@color/background</color>
-    <color name="colorAccent">#ff7324</color>
+    <color name="colorAccent">#FF7324</color>
     <color name="background">#272A33</color>
     <color name="inputBorder">@color/textColorSecondary</color>
-    <color name="textColorPrimary">#ffffff</color>
-    <color name="textColorSecondary">#d8d8d8</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#D8D8D8</color>
     <color name="cardBackground">#343744</color>
-    <color name="green">#2ecc71</color>
+    <color name="green">#2ECC71</color>
     <color name="iconDeActive">#494b57</color>
-    <color name="blue">#1976d2</color>
+    <color name="blue">#1976D2</color>
     <color name="borderColor">#23252D</color>
     <color name="buttonInfoBackgroundColor">#454d60</color>
     <color name="backgroundColorSecondary">#1b1f27</color>
     <color name="timeColor">#5f6472</color>
     <color name="black0">#000000</color>
     <color name="errorColor">#e74c3c</color>
-    <color name="infoColor">#7d8292</color>
+    <color name="infoColor">#7D8292</color>
 </resources>

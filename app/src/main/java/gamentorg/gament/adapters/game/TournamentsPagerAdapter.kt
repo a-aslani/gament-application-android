@@ -2,6 +2,7 @@ package gamentorg.gament.adapters.game
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import gamentorg.gament.constants.Config
 import gamentorg.gament.ui.game.GroupTournamentFragment
@@ -19,10 +20,10 @@ class TournamentsPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm
     override fun getItem(position: Int): Fragment {
 
         return when(position) {
-            groupTournament -> GroupTournamentFragment()
-            knockoutTournament -> KnockoutTournamentFragment()
-            teamKnockout -> TeamKnockoutFragment()
             individualMatches -> IndividualMatchesFragment()
+            teamKnockout -> TeamKnockoutFragment()
+            knockoutTournament -> KnockoutTournamentFragment()
+            groupTournament -> GroupTournamentFragment()
             else -> GroupTournamentFragment()
         }
     }
@@ -30,11 +31,12 @@ class TournamentsPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm
     override fun getCount() = Config.GAME_TAB_COUNT
 
     override fun getPageTitle(position: Int): CharSequence? {
+
         return when(position) {
-            groupTournament -> "گروهی"
-            knockoutTournament -> "حذفی"
-            teamKnockout -> "گروهی حذفی"
             individualMatches -> "انفرادی"
+            teamKnockout -> "گروهی حذفی"
+            knockoutTournament -> "حذفی"
+            groupTournament -> "گروهی"
             else -> super.getPageTitle(position)
         }
     }

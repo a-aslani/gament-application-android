@@ -5,15 +5,12 @@ import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.preference.PreferenceManager
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.FragmentManager
 import dagger.Module
 import dagger.Provides
 import gamentorg.gament.R
 import gamentorg.gament.db.AppDatabase
 import gamentorg.gament.services.network.ApiService
-import gamentorg.gament.ui.GameActivity
 import retrofit2.Retrofit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(includes = [RetrofitModule::class])
