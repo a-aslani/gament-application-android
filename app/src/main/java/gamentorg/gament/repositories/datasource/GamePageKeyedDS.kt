@@ -5,7 +5,7 @@ import androidx.paging.PageKeyedDataSource
 import gamentorg.gament.db.entities.Game
 import gamentorg.gament.repositories.GameRepository
 import gamentorg.gament.services.network.ApiService
-import gamentorg.gament.services.network.models.MainGamesResponse
+import gamentorg.gament.services.network.models.GamesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,21 +15,21 @@ import javax.inject.Singleton
 @Singleton
 class GamePageKeyedDS @Inject constructor(private val apiService: ApiService, private val repository: GameRepository): PageKeyedDataSource<Int, Game>() {
 
-    private var totalPage: Int = 1
+    private var totalPages: Int = 1
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Game>) {
 
-        apiService.fetchAllGames(1).enqueue(object : Callback<MainGamesResponse> {
-            override fun onFailure(call: Call<MainGamesResponse>, t: Throwable) {
+        apiService.fetchAllGames(1).enqueue(object : Callback<GamesResponse> {
+            override fun onFailure(call: Call<GamesResponse>, t: Throwable) {
                 Log.e("network error", t.message)
             }
 
-            override fun onResponse(call: Call<MainGamesResponse>, response: Response<MainGamesResponse>) {
+            override fun onResponse(call: Call<GamesResponse>, response: Response<GamesResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     if (response.code() == 200 && response.body()!!.state) {
                         val games = response.body()!!.data.documents
                         repository.insertGames(games)
-                        totalPage = response.body()!!.data.totalPage
+                        totalPages = response.body()!!.data.totalPages
                         callback.onResult(games, null, response.body()!!.data.currentPage++)
                     }
                 }
@@ -38,13 +38,13 @@ class GamePageKeyedDS @Inject constructor(private val apiService: ApiService, pr
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Game>) {
-        if (params.key <= totalPage) {
-            apiService.fetchAllGames(params.key).enqueue(object : Callback<MainGamesResponse>{
-                override fun onFailure(call: Call<MainGamesResponse>, t: Throwable) {
+        if (params.key <= totalPages) {
+            apiService.fetchAllGames(params.key + 1).enqueue(object : Callback<GamesResponse>{
+                override fun onFailure(call: Call<GamesResponse>, t: Throwable) {
                     Log.e("network error", t.message)
                 }
 
-                override fun onResponse(call: Call<MainGamesResponse>, response: Response<MainGamesResponse>) {
+                override fun onResponse(call: Call<GamesResponse>, response: Response<GamesResponse>) {
                     if (response.isSuccessful && response.body() != null) {
                         if (response.code() == 200 && response.body()!!.state) {
                             val games = response.body()!!.data.documents

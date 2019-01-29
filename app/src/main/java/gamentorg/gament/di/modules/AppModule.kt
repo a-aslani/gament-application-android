@@ -11,6 +11,7 @@ import gamentorg.gament.R
 import gamentorg.gament.db.AppDatabase
 import gamentorg.gament.services.network.ApiService
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(includes = [RetrofitModule::class])
@@ -34,8 +35,8 @@ class AppModule {
 
     @Singleton
     @Provides
+    @Named("farsi")
     fun typeFaceIranYekanMedium(application: Application): Typeface {
         return ResourcesCompat.getFont(application.applicationContext, R.font.iranyekanmedium)!!
     }
-
 }

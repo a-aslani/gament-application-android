@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET("v1/games")
-    fun fetchAllGames(@Query("page") page: Int): Call<MainGamesResponse>
+    fun fetchAllGames(@Query("page") page: Int): Call<GamesResponse>
 
     @FormUrlEncoded
     @POST("v1/phone")
@@ -34,4 +34,7 @@ interface ApiService {
         @Part("username") username: RequestBody,
         @Part("name") name: RequestBody,
         @Part("family") family: RequestBody) : Call<RegisterResponse>
+
+    @GET("v1/tournaments/{game}")
+    fun fetchAllTournaments(@Path("game") gameKey: String, @Query("page") page: Int): Call<TournamentsResponse>
 }

@@ -51,15 +51,6 @@
                 app:layout_constraintTop_toTopOf="@+id/item_main_img_game_xbox"
                 app:layout_constraintBottom_toBottomOf="@+id/item_main_img_game_xbox"/>
         <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp" app:srcCompat="@drawable/ic_phone"
-                android:id="@+id/item_main_img_game_mobile"
-                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_image"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_xbox"/>
-        <ImageView
                 android:layout_width="14dp"
                 android:layout_height="14dp" app:srcCompat="@drawable/ic_xbox"
                 android:id="@+id/item_main_img_game_xbox"
@@ -68,5 +59,14 @@
                 app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_ps"
                 app:layout_constraintTop_toTopOf="@+id/item_main_img_game_mobile"
                 app:layout_constraintBottom_toBottomOf="@+id/item_main_img_game_mobile"/>
+        <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp" app:srcCompat="@drawable/ic_phone"
+                android:id="@+id/item_main_img_game_mobile"
+                app:layout_constraintStart_toEndOf="@+id/item_main_img_game_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toStartOf="@+id/item_main_img_game_xbox"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

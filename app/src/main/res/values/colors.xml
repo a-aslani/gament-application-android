@@ -9,13 +9,14 @@
     <color name="textColorSecondary">#D8D8D8</color>
     <color name="cardBackground">#343744</color>
     <color name="green">#2ECC71</color>
-    <color name="iconDeActive">#494b57</color>
+    <color name="iconDeActive">#494B57</color>
     <color name="blue">#1976D2</color>
     <color name="borderColor">#23252D</color>
     <color name="buttonInfoBackgroundColor">#454d60</color>
     <color name="backgroundColorSecondary">#1b1f27</color>
-    <color name="timeColor">#5f6472</color>
+    <color name="timeColor">#5F6472</color>
     <color name="black0">#000000</color>
     <color name="errorColor">#e74c3c</color>
     <color name="infoColor">#7D8292</color>
+    <color name="tournamentMoney">@color/blue</color>
 </resources>

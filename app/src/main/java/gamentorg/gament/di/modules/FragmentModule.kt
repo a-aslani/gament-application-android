@@ -3,6 +3,7 @@ package gamentorg.gament.di.modules
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import gamentorg.gament.ui.game.GameFragment
+import gamentorg.gament.ui.game.TournamentFragment
 import gamentorg.gament.ui.main.MainFragment
 import gamentorg.gament.ui.login.LoginPageOneFragment
 import gamentorg.gament.ui.login.LoginPageTwoFragment
@@ -25,4 +26,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     internal abstract fun contributeGameFragment(): GameFragment
+
+    @ContributesAndroidInjector
+    internal abstract fun contributeTournamentFragment(): TournamentFragment
 }

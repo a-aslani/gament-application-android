@@ -36,9 +36,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var applicationService: ApplicationService
 
     @Inject
-    lateinit var font: Typeface
-
-    @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
@@ -74,10 +71,6 @@ class MainActivity : AppCompatActivity() {
         //Set activity direction to RTL
         window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
 
-        main_collapsing_toolbar_layout.setCollapsedTitleTypeface(font)
-        main_collapsing_toolbar_layout.setExpandedTitleTypeface(font)
-
-
         setupNavControllerAndConfig()
 
         setupNavigationDrawer()
@@ -94,9 +87,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.mainFragment -> setupMainUI(navController)
                 R.id.gameFragment -> setupGameUI(navController, arguments)
                 R.id.loginPageOneFragment -> setupLoginUI(navController)
+                R.id.tournamentFragment -> setupTournamentUI(navController)
             }
         }
     }
+
     private fun setExpandEnabled(enabled: Boolean) {
 
         main_appbar_layout.setExpanded(enabled, true)
@@ -114,30 +109,26 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun setupTournamentUI(navController: NavController) {
+
+        main_toolbar.setupWithNavController(navController, appBarConfig)
+
+        main_fab.hide()
+    }
+
     private fun setupLoginUI(controller: NavController) {
 
-        main_collapsing_toolbar_layout.setupWithNavController(main_toolbar, controller, appBarConfig)
         main_toolbar.setupWithNavController(controller, appBarConfig)
-        main_collapsing_toolbar_layout.collapsedTitleGravity = GravityCompat.START
 
-        setExpandEnabled(false)
-
-        game_tab_layout.visibility = View.GONE
-//        main_fab.hide()
-
-        main_fab.visibility = View.INVISIBLE
+        main_fab.hide()
 
     }
 
     private fun setupGameUI(controller: NavController, arguments: Bundle?) {
 
-        main_collapsing_toolbar_layout.setupWithNavController(main_toolbar, controller, appBarConfig)
         main_toolbar.setupWithNavController(controller, appBarConfig)
-        main_collapsing_toolbar_layout.collapsedTitleGravity = GravityCompat.END
 
         setupGameUiVisibility()
-
-        setExpandEnabled(true)
 
         if (arguments != null) {
             setupGameUiData(arguments)
@@ -147,59 +138,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupGameUiData(arguments: Bundle?) {
 
-        val game: Game? = arguments?.getParcelable(getString(R.string.game_extras))
-
-        game_img_game_pc.setImageResource(R.drawable.ic_computer)
-        game_img_game_ps.setImageResource(R.drawable.ic_ps)
-        game_img_game_mobile.setImageResource(R.drawable.ic_phone)
-        game_img_game_xbox.setImageResource(R.drawable.ic_xbox)
-
-        if (game != null) {
-
-            main_collapsing_toolbar_layout.title = game.name!!.toUpperCase()
-
-            if (game.pc == true) {
-                game_img_game_pc.setImageResource(R.drawable.ic_computer_active)
-            }
-            if (game.ps == true) {
-                game_img_game_ps.setImageResource(R.drawable.ic_ps_active)
-            }
-            if (game.mobile == true) {
-                game_img_game_mobile.setImageResource(R.drawable.ic_phone_active)
-            }
-            if (game.xbox == true) {
-                game_img_game_xbox.setImageResource(R.drawable.ic_xbox_active)
-            }
-
-            picasso.load(Config.SERVER_ADDRESS + "/" + game.image).into(main_banner_image)
-        }
-
+        main_toolbar.title = arguments!!.getString("game_name")?.toUpperCase()
     }
 
     private fun setupGameUiVisibility() {
 
-        game_tab_layout.visibility = View.VISIBLE
-//        main_fab.show()
-        main_fab.visibility = View.VISIBLE
+        main_fab.show()
     }
 
     private fun setupMainUI(controller: NavController) {
 
-        main_collapsing_toolbar_layout.setupWithNavController(main_toolbar, controller, appBarConfig)
         main_toolbar.setupWithNavController(controller, appBarConfig)
-        main_collapsing_toolbar_layout.collapsedTitleGravity = GravityCompat.START
 
         setupMainUiVisibility()
-
-        setExpandEnabled(false)
 
     }
 
 
     private fun setupMainUiVisibility() {
-        game_tab_layout.visibility = View.GONE
-//        main_fab.show()
-        main_fab.visibility = View.VISIBLE
+
+        main_fab.show()
     }
 
     override fun onResume() {
@@ -216,11 +174,11 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_nav_host_fragment)
         appBarConfig = AppBarConfiguration(navController.graph, drawerLayout)
         navigationView.setupWithNavController(navController)
-        main_collapsing_toolbar_layout.setupWithNavController(main_toolbar, navController, appBarConfig)
         main_toolbar.setupWithNavController(navController, appBarConfig)
+        main_toolbar.setTitleTextColor(resources.getColor(R.color.textColorPrimary))
     }
 
-    override fun onSupportNavigateUp() : Boolean {
+    override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfig) || super.onSupportNavigateUp()
     }
 
@@ -243,7 +201,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupNavigationDrawer() {
         val toggle =
-            ActionBarDrawerToggle(this, drawerLayout, main_toolbar,
+            ActionBarDrawerToggle(
+                this, drawerLayout, main_toolbar,
                 R.string.open_drawer,
                 R.string.close_drawer
             )
@@ -253,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener {
 
             when (it.itemId) {
-
+                R.id.nav_menu_home -> navController.navigate(R.id.action_global_mainFragment)
             }
 
             drawerLayout.closeDrawer(GravityCompat.START, true)
@@ -285,10 +244,9 @@ class MainActivity : AppCompatActivity() {
             navigation_view.inflateHeaderView(R.layout.navigation_drawer_header)
             navigation_view.inflateMenu(R.menu.navigation_drawer_menu)
 
-
             val navHeader = if (navigation_view.headerCount == 0) {
                 navigation_view.getHeaderView(navigation_view.headerCount)
-            }else {
+            } else {
                 navigation_view.getHeaderView(navigation_view.headerCount - 1)
             }
 

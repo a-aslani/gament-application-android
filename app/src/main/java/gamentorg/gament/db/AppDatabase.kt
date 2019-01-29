@@ -5,11 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import gamentorg.gament.db.dao.GameDao
+import gamentorg.gament.db.dao.TournamentDao
 import gamentorg.gament.db.dao.UserDao
 import gamentorg.gament.db.entities.Game
+import gamentorg.gament.db.entities.Tournament
 import gamentorg.gament.db.entities.User
 
-@Database(entities = [Game::class, User::class], version = 1, exportSchema = false)
+@Database(entities = [Game::class, User::class, Tournament::class], version = 4, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
 
     companion object {
@@ -33,4 +35,5 @@ abstract class AppDatabase: RoomDatabase() {
 
     abstract fun gameDao(): GameDao
     abstract fun userDao(): UserDao
+    abstract fun tournamentDao(): TournamentDao
 }

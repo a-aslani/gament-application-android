@@ -9,12 +9,16 @@
               android:label="گیمنت"
               tools:layout="@layout/fragment_main">
         <action android:id="@+id/action_mainFragment_to_gameFragment" app:destination="@id/gameFragment"
-                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/trans_left_out"
-                app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+                app:enterAnim="@anim/trans_left_in" app:exitAnim="@anim/trans_left_out"
+                app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/trans_right_out"/>
     </fragment>
 
     <fragment android:id="@+id/gameFragment" android:name="gamentorg.gament.ui.game.GameFragment"
-              tools:layout="@layout/fragment_game"/>
+              tools:layout="@layout/fragment_game">
+        <action android:id="@+id/action_gameFragment_to_tournamentFragment" app:destination="@id/tournamentFragment"
+                app:enterAnim="@anim/trans_left_in" app:exitAnim="@anim/trans_left_out"
+                app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/trans_right_out"/>
+    </fragment>
     <fragment android:id="@+id/loginPageOneFragment" android:name="gamentorg.gament.ui.login.LoginPageOneFragment"
               android:label="ورود و عضویت">
         <action android:id="@+id/action_loginPageOneFragment_to_loginPageTwoFragment"
@@ -36,5 +40,10 @@
     </fragment>
     <fragment android:id="@+id/registerFragment" android:name="gamentorg.gament.ui.login.RegisterFragment"
               android:label="عضویت"/>
+    <fragment android:id="@+id/tournamentFragment" android:name="gamentorg.gament.ui.game.TournamentFragment"
+              tools:layout="@layout/fragment_tournament"/>
+    <action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment"
+            app:enterAnim="@anim/trans_right_in" app:exitAnim="@anim/trans_right_out"
+            app:popEnterAnim="@anim/trans_left_in" app:popExitAnim="@anim/trans_left_out"/>
 
 </navigation>

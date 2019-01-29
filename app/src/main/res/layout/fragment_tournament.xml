@@ -1,14 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.game.TournamentFragment">
-
-    <androidx.viewpager.widget.ViewPager
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.game.TournamentFragment"
+>
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tournament_view_pager"
-    />
+    >
 
-</FrameLayout>
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           app:layout_constraintTop_toTopOf="parent"
+                                                           app:layout_constraintStart_toStartOf="parent"
+                                                           app:layout_constraintEnd_toEndOf="parent"
+                                                           app:cardCornerRadius="0dp"
+                                                           android:id="@+id/materialCardView2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="match_parent"
+                                                               android:paddingBottom="8dp">
+
+                <FrameLayout
+                        android:id="@+id/tournament_cover_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+                    <ImageView
+                            android:src="@drawable/tournament_sample"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/tournament_img_cover"
+                            android:adjustViewBounds="true" android:scaleType="centerCrop"/>
+                    <FrameLayout android:orientation="vertical" android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:background="@drawable/banner_gradient">
+                    </FrameLayout>
+
+                </FrameLayout>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView3"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        app:srcCompat="@drawable/ic_card_giftcard"
+                        app:layout_constraintTop_toBottomOf="@+id/divider2" android:layout_marginTop="16dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_gift_title" app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@+id/imageView3"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                        android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary" android:text="جایزه ی برنده"/>
+                <TextView
+                        android:text="نوع رقابت"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/txt_default"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textColor="@color/infoColor" app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_default2"
+                        android:textSize="12sp" android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tournament_cover_wrapper"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside" android:layout_marginStart="16dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_mode" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_default"
+                        tools:text="گروهی 5 به 5" app:layout_constraintStart_toStartOf="@+id/txt_default"
+                        android:textSize="12sp"/>
+                <TextView
+                        android:text="ظرفیت شرکت کننده"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/txt_default2"
+                        android:textColor="@color/infoColor"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/txt_default"
+                        app:layout_constraintStart_toEndOf="@+id/txt_default"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintEnd_toStartOf="@+id/txt_default3"
+                        android:textSize="12sp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_count" android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_default2"
+                        app:layout_constraintStart_toStartOf="@+id/txt_default2"
+                        app:layout_constraintEnd_toEndOf="@+id/txt_default2" tools:text="16 نفر"
+                        android:textSize="12sp"/>
+                <TextView
+                        android:text="پلتفرم مسابقه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/txt_default3"
+                        android:textColor="@color/infoColor"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/txt_default2"
+                        app:layout_constraintStart_toEndOf="@+id/txt_default2"
+                        app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="12sp" android:layout_marginEnd="16dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_platform" app:layout_constraintEnd_toEndOf="@+id/txt_default3"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_default3"
+                        tools:text="PlayStation 4"
+                        android:textSize="12sp"/>
+                <View
+                        android:id="@+id/divider2"
+                        android:layout_width="0dp"
+                        android:layout_height="4dp"
+                        android:background="@color/background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tournament_txt_count"
+                        android:layout_marginTop="16dp"/>
+                <com.google.android.material.button.MaterialButton android:layout_width="0dp"
+                                                                   android:layout_height="wrap_content"
+                                                                   android:text="شرکت در رقابت"
+                                                                   style="@style/FarsiButtonStyle"
+                                                                   android:background="@color/blue"
+                                                                   app:backgroundTint="@color/blue"
+                                                                   android:textSize="14sp"
+                                                                   android:layout_marginStart="16dp"
+                                                                   app:layout_constraintStart_toStartOf="parent"
+                                                                   android:id="@+id/materialButton"
+                                                                   android:layout_marginEnd="16dp"
+                                                                   app:layout_constraintEnd_toEndOf="parent"
+                                                                   android:paddingBottom="16dp"
+                                                                   android:paddingTop="14dp"
+                                                                   app:layout_constraintHorizontal_bias="1.0"
+                                                                   android:layout_marginTop="24dp"
+                                                                   app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                                                                   app:cornerRadius="25dp"/>
+                <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView2"
+                        app:layout_constraintTop_toBottomOf="@+id/divider4"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        app:srcCompat="@drawable/ic_add_shopping" android:layout_marginTop="16dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_price_title"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toTopOf="@+id/imageView2"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView2" android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary" android:text="هزینه ی ورودی"/>
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/divider5"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        app:srcCompat="@drawable/ic_access_time" android:layout_marginTop="16dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_time_title"
+                        app:layout_constraintTop_toTopOf="@+id/imageView4"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4" android:layout_marginStart="8dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary" android:text="تاریخ ایجاد"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_gift" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tournament_txt_gift_title"
+                        tools:text="240000 تومان" android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_price" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tournament_txt_price_title"
+                        tools:text="12000 تومان" android:textSize="12sp" android:textColor="@color/textColorSecondary"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_time" app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/tournament_txt_time_title"
+                        tools:text="یکشنبه 12 اردیبهشت 1397" android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary"/>
+                <View
+                        android:id="@+id/divider4"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3" android:layout_marginTop="16dp"/>
+                <View
+                        android:id="@+id/divider5"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView2" android:layout_marginTop="16dp"/>
+                <View
+                        android:id="@+id/divider6"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4" android:layout_marginTop="16dp"/>
+                <ImageView
+                        app:srcCompat="@drawable/ic_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView5"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/divider6" android:layout_marginTop="16dp"/>
+                <TextView
+                        android:text="تعداد شرکت کننده"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView23"
+                        app:layout_constraintTop_toTopOf="@+id/imageView5"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                        app:layout_constraintStart_toEndOf="@+id/imageView5" android:layout_marginStart="8dp"
+                        android:textSize="12sp" android:textColor="@color/textColorSecondary"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tournament_txt_quantity"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/textView23"
+                        app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp" tools:text="16/3"
+                        android:textSize="12sp" android:textColor="@color/textColorSecondary"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+                                                           app:layout_constraintStart_toStartOf="parent"
+                                                           app:layout_constraintEnd_toEndOf="parent"
+                                                           android:layout_marginTop="8dp"
+                                                           app:cardCornerRadius="0dp"
+                                                           app:layout_constraintBottom_toBottomOf="parent"
+                                                           android:layout_marginBottom="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <View
+                        android:id="@+id/divider7"
+                        android:layout_width="4dp"
+                        android:layout_height="0dp"
+                        android:background="@color/colorAccent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+                />
+                <TextView
+                        android:text="توضیحات مسابقه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView25"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="16dp" android:textColor="@color/infoColor"/>
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:id="@+id/tournament_txt_description"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="16dp" app:layout_constraintStart_toStartOf="parent"
+                        tools:text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است"
+                        android:textSize="12sp" android:lineSpacingExtra="8sp" android:layout_marginStart="16dp"
+                        android:textColor="@color/textColorSecondary"
+                        app:layout_constraintTop_toBottomOf="@+id/textView25" android:layout_marginTop="8dp"/>
+                <TextView
+                        android:text="مورد نیاز"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView26"
+                        app:layout_constraintTop_toBottomOf="@+id/tournament_txt_description"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp" android:textColor="@color/infoColor"/>
+                <TextView
+                        android:text="اکانت PS4 و نام کاربری شما در بازی"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView27"
+                        app:layout_constraintTop_toBottomOf="@+id/textView26"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/textColorSecondary"/>
+                <TextView
+                        android:text="قوانین مسابقه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView28"
+                        app:layout_constraintTop_toBottomOf="@+id/textView27"
+                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                        android:textColor="@color/infoColor" android:layout_marginTop="16dp"/>
+                <com.google.android.material.button.MaterialButton android:layout_width="0dp"
+                                                                   android:layout_height="wrap_content"
+                                                                   android:layout_marginTop="8dp"
+                                                                   app:layout_constraintTop_toBottomOf="@+id/textView28"
+                                                                   android:layout_marginBottom="16dp"
+                                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                                   app:layout_constraintStart_toStartOf="parent"
+                                                                   android:layout_marginStart="16dp"
+                                                                   android:text="مشاهده ی قوانین"
+                                                                   android:textAppearance="@style/AppTheme.TextAppearance"
+                                                                   style="@style/FarsiButtonStyle"
+                                                                   android:background="@color/timeColor"
+                                                                   app:backgroundTint="@color/timeColor"
+                                                                   android:textSize="12sp"
+                                                                   android:layout_marginEnd="16dp"
+                                                                   app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

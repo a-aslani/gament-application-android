@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -47,15 +48,16 @@ class MainFragment : Fragment() {
         val rv = view.main_rv_games
         rv.layoutManager = LinearLayoutManager(activity!!.applicationContext, RecyclerView.VERTICAL, false)
         rv.hasFixedSize()
-        rv.isNestedScrollingEnabled = false
         rv.adapter = gamesListAdapter
 
         gamesListAdapter.onItemClickListener(object : GamesListAdapter.OnItemClickListener {
 
             override fun game(game: Game) {
 
-                val bundle = Bundle()
-                bundle.putParcelable(getString(R.string.game_extras), game)
+                val bundle = bundleOf(
+                    "game_key" to game.key,
+                    "game_name" to game.name
+                )
 
                 findNavController().navigate(R.id.action_mainFragment_to_gameFragment, bundle)
 
