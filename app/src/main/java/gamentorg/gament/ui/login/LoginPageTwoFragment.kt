@@ -160,7 +160,7 @@ class LoginPageTwoFragment : Fragment() {
 
         } else {
 
-            register_btn_send.text = getString(R.string.send)
+            register_btn_send.text = getString(R.string.send_verify_code)
 
             login_page_two_progress_bar.visibility = View.INVISIBLE
 

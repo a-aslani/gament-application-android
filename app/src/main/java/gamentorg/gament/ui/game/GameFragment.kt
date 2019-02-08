@@ -33,7 +33,7 @@ class GameFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    lateinit var tournamentViewModel: TournamentViewModel
+    private lateinit var tournamentViewModel: TournamentViewModel
 
     private var gameKey: Int = 0
 

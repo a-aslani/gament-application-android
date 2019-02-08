@@ -56,6 +56,13 @@
         <item name="editTextColor">@color/textColorSecondary</item>
     </style>
 
+    <style name="AppTheme.TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/inputBorder</item>
+        <item name="android:fontFamily">@font/iranyekanregular</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
 
     <style name="AppTheme.TextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/textColorPrimary</item>

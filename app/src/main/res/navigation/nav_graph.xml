@@ -20,6 +20,7 @@
                 app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/trans_right_out"/>
     </fragment>
     <fragment android:id="@+id/loginPageOneFragment" android:name="gamentorg.gament.ui.login.LoginPageOneFragment"
+              tools:layout="@layout/fragment_login_page_one"
               android:label="ورود و عضویت">
         <action android:id="@+id/action_loginPageOneFragment_to_loginPageTwoFragment"
                 app:destination="@id/loginPageTwoFragment" app:enterAnim="@anim/trans_right_in"
@@ -31,6 +32,7 @@
             app:enterAnim="@anim/trans_right_in" app:exitAnim="@anim/trans_right_out"
             app:popEnterAnim="@anim/trans_left_in" app:popExitAnim="@anim/trans_left_out"/>
     <fragment android:id="@+id/loginPageTwoFragment" android:name="gamentorg.gament.ui.login.LoginPageTwoFragment"
+              tools:layout="@layout/fragment_login_page_two"
               android:label="تایید شماره موبایل">
         <action android:id="@+id/action_loginPageTwoFragment_to_registerFragment"
                 app:destination="@id/registerFragment" app:enterAnim="@anim/trans_right_in"
@@ -39,11 +41,23 @@
                 app:popUpToInclusive="true" app:launchSingleTop="true"/>
     </fragment>
     <fragment android:id="@+id/registerFragment" android:name="gamentorg.gament.ui.login.RegisterFragment"
+              tools:layout="@layout/fragment_register"
               android:label="عضویت"/>
     <fragment android:id="@+id/tournamentFragment" android:name="gamentorg.gament.ui.game.TournamentFragment"
-              tools:layout="@layout/fragment_tournament"/>
+              tools:layout="@layout/fragment_tournament">
+        <action android:id="@+id/action_tournamentFragment_to_ruleFragment" app:destination="@id/ruleFragment"
+                app:enterAnim="@anim/trans_left_in" app:exitAnim="@anim/trans_left_out"
+                app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/trans_right_out"/>
+    </fragment>
     <action android:id="@+id/action_global_mainFragment" app:destination="@id/mainFragment"
             app:enterAnim="@anim/trans_right_in" app:exitAnim="@anim/trans_right_out"
             app:popEnterAnim="@anim/trans_left_in" app:popExitAnim="@anim/trans_left_out"/>
+    <fragment android:id="@+id/ruleFragment" android:name="gamentorg.gament.ui.game.RuleFragment"
+              tools:layout="@layout/fragment_rule"/>
+    <fragment android:id="@+id/settingsFragment" android:name="gamentorg.gament.ui.setting.SettingsFragment"
+              android:label="تنظیمات" tools:layout="@layout/fragment_settings"/>
+    <action android:id="@+id/action_global_settingsFragment" app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/trans_left_in" app:exitAnim="@anim/trans_left_out"
+            app:popEnterAnim="@anim/trans_right_in" app:popExitAnim="@anim/trans_right_out"/>
 
 </navigation>

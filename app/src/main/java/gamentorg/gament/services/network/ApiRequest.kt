@@ -3,10 +3,7 @@ package gamentorg.gament.services.network
 import android.content.SharedPreferences
 import android.util.Log
 import gamentorg.gament.constants.Config
-import gamentorg.gament.services.network.models.CheckUsernameResponse
-import gamentorg.gament.services.network.models.LoginPhoneResponse
-import gamentorg.gament.services.network.models.LoginVerifyCodeResponse
-import gamentorg.gament.services.network.models.RegisterResponse
+import gamentorg.gament.services.network.models.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -73,6 +70,20 @@ class ApiRequest @Inject constructor(private val apiService: ApiService, private
             }
 
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                callback.onReceive(response)
+            }
+        })
+    }
+
+    fun fetchRule(key: String, callback: Callback<RuleResponse>) {
+
+        apiService.fetchRule(key).enqueue(object : retrofit2.Callback<RuleResponse> {
+            override fun onFailure(call: Call<RuleResponse>, t: Throwable) {
+                Log.e(networkError, t.message)
+            }
+
+            override fun onResponse(call: Call<RuleResponse>, response: Response<RuleResponse>) {
+
                 callback.onReceive(response)
             }
         })

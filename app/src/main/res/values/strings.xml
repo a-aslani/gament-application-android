@@ -33,14 +33,24 @@
     <string name="register_phone_info">شماره موبایل خود را بدون 0 ابتدایی وارد نمایید</string>
     <string name="send">ارسال</string>
     <string name="register">ثبت نام</string>
-    <string name="verify_code">کد فعالسازی</string>
+    <string name="verify_code">کد تایید</string>
     <string name="logout">خروج از حساب کاربری</string>
-    <string name="login_verify_code_info">کد فعالسازی به شماره ی شما ارسال میگردد</string>
+    <string name="login_verify_code_info">کد تایید به شماره موبایل شما ارسال میگردد</string>
     <string name="verify_code_timer_title">مدت زمان اعتبار کد</string>
     <string name="_03_00">03:00</string>
     <string name="choice_picture">انتخاب تصویر</string>
-    <string name="sendig">در حال ارسال ...</string>
+    <string name="sendig">در حال ارسال …</string>
     <string name="authenticate">تایید هویت</string>
     <string name="join">عضویت</string>
     <string name="game_extras">game</string>
+    <string name="free">رایگان</string>
+    <string name="no_gift">بدون جایزه</string>
+    <string name="created_at">تاریخ ایجاد</string>
+    <string name="computer">Computer</string>
+    <string name="playstation_4">PlayStation 4</string>
+    <string name="xbox_360">XBox 360</string>
+    <string name="mobile">Mobile</string>
+    <string name="start_date">تاریخ شروع</string>
+    <string name="finish_date">تاریخ پایان</string>
+    <string name="send_verify_code">تایید شماره موبایل</string>
 </resources>

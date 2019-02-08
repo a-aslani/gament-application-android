@@ -23,7 +23,7 @@ class GamePageKeyedRepository @Inject constructor(
     private val gameDao: GameDao = appDatabase.gameDao()
 
     fun getAllGamesSortedByDate(): LiveData<PagedList<Game>> {
-        val conf = PagedList.Config.Builder().setPageSize(10).build()
+        val conf = PagedList.Config.Builder().setPageSize(5).build()
         return if (applicationService.hasInternetConnection()) {
             LivePagedListBuilder(gameDataSourceFactory, conf).build()
         } else {

@@ -50,13 +50,26 @@ class TournamentsListAdapter @Inject constructor(private val tools: Tools): Page
         @SuppressLint("SetTextI18n")
         fun bindData(tournament: Tournament, onClickListener: OnItemClickListener) {
 
-            itemView.item_tournament_txt_name.text = tools.persianNumber(tournament.name!!)
-            itemView.item_tournament_txt_members.text = "${tools.persianNumber(tournament.members.toString())} بازیکن"
-            itemView.item_tournament_txt_date.text = tools.persianNumber(tournament.date!!)
-            itemView.item_tournament_icon_mode.setImageResource(R.drawable.ic_game_pad)
+            itemView.item_tournament_txt_description.text = tools.persianNumber(tournament.description!!)
+            itemView.item_tournament_txt_members.text = "${tools.persianNumber(tournament.members.toString())}/${tools.persianNumber(tournament.count.toString())}"
+            itemView.item_tournament_txt_name.text = "رقابت ${tools.persianNumber(tournament.key.toString())}"
 
-            if (tournament.ticket == 0) {
+            if (tournament.ticket != 0) {
+                itemView.item_tournament_txt_ticket.text = "${tools.persianNumber(tools.numberFormat(tournament.ticket!!))} تومان ورودی"
+            } else {
+                itemView.item_tournament_txt_ticket.text = "رایگان"
+            }
 
+            if (tournament.award != 0) {
+                itemView.item_tournament_txt_award.text = "${tools.persianNumber(tools.numberFormat(tournament.award!!))} تومان جایزه"
+            } else {
+                itemView.item_tournament_txt_award.text = "بدون جایزه"
+            }
+
+            when (tournament.state) {
+                1 -> itemView.item_tournament_txt_state.text = "ثبت نام"
+                2 -> itemView.item_tournament_txt_state.text = "در حال برگذاری"
+                3 -> itemView.item_tournament_txt_state.text = "پایان یافته"
             }
 
             when(tournament.platform) {

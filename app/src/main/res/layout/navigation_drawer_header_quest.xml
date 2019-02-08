@@ -14,6 +14,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:fontFamily="@font/iranyekanregular" app:cornerRadius="25dp" android:background="@color/colorAccent"
             app:backgroundTint="@color/colorAccent" android:onClick="loginBtnOnClick"
-            style="@style/AppTheme.BottomAppbarStyle" android:paddingTop="0dp" android:paddingBottom="0dp"
-            android:paddingStart="16dp" android:paddingEnd="16dp"/>
+            style="@style/AppTheme.BottomAppbarStyle" android:paddingTop="8dp" android:paddingBottom="10dp"
+            android:paddingStart="24dp" android:paddingEnd="24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

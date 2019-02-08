@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import gamentorg.gament.vm.GameViewModel
-import gamentorg.gament.vm.TournamentViewModel
-import gamentorg.gament.vm.UserViewModel
-import gamentorg.gament.vm.ViewModelFactory
+import gamentorg.gament.vm.*
 
 @Module
 abstract class ViewModelModule {
@@ -30,4 +27,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TournamentViewModel::class)
     abstract fun bindTournamentViewModel(tournamentViewModel: TournamentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RuleViewModel::class)
+    abstract fun bindRuleViewModel(ruleViewModel: RuleViewModel): ViewModel
 }

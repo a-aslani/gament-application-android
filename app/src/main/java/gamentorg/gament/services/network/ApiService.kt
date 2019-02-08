@@ -37,4 +37,7 @@ interface ApiService {
 
     @GET("v1/tournaments/{game}")
     fun fetchAllTournaments(@Path("game") gameKey: String, @Query("page") page: Int): Call<TournamentsResponse>
+
+    @GET("v1/rules/{rule}")
+    fun fetchRule(@Path("rule") key: String) : Call<RuleResponse>
 }

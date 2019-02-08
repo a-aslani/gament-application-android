@@ -194,7 +194,6 @@ class MainActivity : AppCompatActivity() {
             main_fab.setImageResource(R.drawable.ic_game_pad)
             main_fab.setOnClickListener {
                 startActivity(Intent(this, ControllerActivity::class.java))
-
             }
         }
     }
@@ -213,6 +212,7 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.nav_menu_home -> navController.navigate(R.id.action_global_mainFragment)
+                R.id.nav_menu_setting -> navController.navigate(R.id.action_global_settingsFragment)
             }
 
             drawerLayout.closeDrawer(GravityCompat.START, true)
